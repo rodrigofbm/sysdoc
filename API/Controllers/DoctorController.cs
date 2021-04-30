@@ -47,8 +47,8 @@ namespace API.Controllers
 
         [HttpPut]
         public async Task<ActionResult<DoctorDTO>> Update([FromBody] DoctorDTO doctor) {
-            var docEntity = await _unityOfWork.GetRepository<Doctor>().GetByIdAsync(doctor.Id);
             var spec = new DoctorWithCrmAndCrmUfSpecification(doctor.Crm, doctor.CrmUf);
+            var docEntity = await _unityOfWork.GetRepository<Doctor>().GetByIdAsync(doctor.Id);
             var doctors = await _unityOfWork.GetRepository<Doctor>().GetEntityWithSpec(spec);
 
             if(docEntity == null) {
@@ -56,7 +56,7 @@ namespace API.Controllers
             } 
 
             if(doctors != null && doctors.Id != docEntity.Id) {
-                return BadRequest(new ApiErrorResponse(400, "CRM já cadastrado"));
+                return BadRequest(new ApiErrorResponse(400, "Este CRM pertence a outro médico."));
             } 
 
             var doc = _mapper.Map<DoctorDTO, Doctor>(doctor);
@@ -82,7 +82,7 @@ namespace API.Controllers
             _unityOfWork.GetRepository<Doctor>().Delete(doctor);
             await _unityOfWork.Complete();
             
-            return Ok();
+            return NoContent();
         }
     }
 }
