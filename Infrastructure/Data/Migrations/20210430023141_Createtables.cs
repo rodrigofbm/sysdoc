@@ -43,6 +43,24 @@ namespace Infrastructure.Data.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Doctors_Crm",
+                table: "Doctors",
+                column: "Crm",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Doctors_CrmUf",
+                table: "Doctors",
+                column: "CrmUf",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Patients_Cpf",
+                table: "Patients",
+                column: "Cpf",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Patients_DoctorId",
                 table: "Patients",
                 column: "DoctorId");

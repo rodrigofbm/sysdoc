@@ -39,6 +39,12 @@ namespace Infrastructure.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Crm")
+                        .IsUnique();
+
+                    b.HasIndex("CrmUf")
+                        .IsUnique();
+
                     b.ToTable("Doctors");
                 });
 
@@ -63,6 +69,9 @@ namespace Infrastructure.Data.Migrations
                         .HasColumnType("text");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Cpf")
+                        .IsUnique();
 
                     b.HasIndex("DoctorId");
 

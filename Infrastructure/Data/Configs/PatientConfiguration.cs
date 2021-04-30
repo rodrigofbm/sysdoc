@@ -12,6 +12,7 @@ namespace Infrastructure.Data.Configs
         builder.Property(p => p.Name).IsRequired();
         builder.Property(p => p.BirthDate).IsRequired();
         builder.Property(p => p.Cpf).IsRequired();
+        builder.HasIndex(p => p.Cpf).IsUnique();
     }
   }
 }

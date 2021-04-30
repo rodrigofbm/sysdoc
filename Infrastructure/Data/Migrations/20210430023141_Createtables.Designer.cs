@@ -10,7 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Infrastructure.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210430015751_Createtables")]
+    [Migration("20210430023141_Createtables")]
     partial class Createtables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -41,6 +41,12 @@ namespace Infrastructure.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Crm")
+                        .IsUnique();
+
+                    b.HasIndex("CrmUf")
+                        .IsUnique();
+
                     b.ToTable("Doctors");
                 });
 
@@ -65,6 +71,9 @@ namespace Infrastructure.Data.Migrations
                         .HasColumnType("text");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Cpf")
+                        .IsUnique();
 
                     b.HasIndex("DoctorId");
 
