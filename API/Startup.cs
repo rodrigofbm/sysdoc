@@ -1,3 +1,4 @@
+using API.Helpers;
 using Core.Interfaces;
 using Infrastructure.Data;
 using Infrastructure.Data.Repositories;
@@ -25,6 +26,7 @@ namespace API
         {
 
             services.AddControllers();
+            services.AddAutoMapper(typeof(MappingProfiles).Assembly);
             services.AddScoped<IUnityOfWork, UnityOfWork>();
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddDbContext<ApplicationDbContext>(options =>
