@@ -31,19 +31,14 @@ namespace Infrastructure.Data.Migrations
 
                     b.Property<string>("CrmUf")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(2)
+                        .HasColumnType("character varying(2)");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("Crm")
-                        .IsUnique();
-
-                    b.HasIndex("CrmUf")
-                        .IsUnique();
 
                     b.ToTable("Doctors");
                 });

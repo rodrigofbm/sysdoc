@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Infrastructure.Data.Migrations
 {
-    public partial class Createtables : Migration
+    public partial class InitialCreateTables : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,7 +14,7 @@ namespace Infrastructure.Data.Migrations
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Name = table.Column<string>(type: "text", nullable: false),
                     Crm = table.Column<string>(type: "text", nullable: false),
-                    CrmUf = table.Column<string>(type: "text", nullable: false)
+                    CrmUf = table.Column<string>(type: "character varying(2)", maxLength: 2, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -41,18 +41,6 @@ namespace Infrastructure.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Doctors_Crm",
-                table: "Doctors",
-                column: "Crm",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Doctors_CrmUf",
-                table: "Doctors",
-                column: "CrmUf",
-                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Patients_Cpf",

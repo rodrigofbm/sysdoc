@@ -10,10 +10,10 @@ namespace Infrastructure.Data
 {
   public class UnityOfWork : IUnityOfWork
   {
-    private readonly DbContext _context;
+    private readonly ApplicationDbContext _context;
     private Hashtable _repositories;
 
-    public UnityOfWork(DbContext context)
+    public UnityOfWork(ApplicationDbContext context)
     {
         _context = context;
     }

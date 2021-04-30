@@ -11,9 +11,7 @@ namespace Infrastructure.Data.Configs
       builder.Property(p => p.Id).IsRequired();
       builder.Property(p => p.Name).IsRequired();
       builder.Property(p => p.Crm).IsRequired();
-      builder.Property(p => p.CrmUf).IsRequired();
-      builder.HasIndex(p => p.Crm).IsUnique();
-      builder.HasIndex(p => p.CrmUf).IsUnique();
+      builder.Property(p => p.CrmUf).HasMaxLength(2).IsRequired();
     }
   }
 }

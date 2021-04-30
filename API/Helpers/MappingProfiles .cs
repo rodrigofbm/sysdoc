@@ -7,7 +7,8 @@ namespace API.Helpers
     public class MappingProfiles : Profile
     {
         public MappingProfiles() {
-            CreateMap<Doctor, DoctorDTO>();
+            CreateMap<Doctor, DoctorDTO>().ReverseMap();
+            CreateMap<Patient, PatientDTO>().ReverseMap();
         }
     }
 }

@@ -10,8 +10,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Infrastructure.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210430023141_Createtables")]
-    partial class Createtables
+    [Migration("20210430172931_InitialCreateTables")]
+    partial class InitialCreateTables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -33,19 +33,14 @@ namespace Infrastructure.Data.Migrations
 
                     b.Property<string>("CrmUf")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(2)
+                        .HasColumnType("character varying(2)");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("Crm")
-                        .IsUnique();
-
-                    b.HasIndex("CrmUf")
-                        .IsUnique();
 
                     b.ToTable("Doctors");
                 });
