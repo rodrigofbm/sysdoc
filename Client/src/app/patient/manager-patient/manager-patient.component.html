@@ -21,7 +21,8 @@
       </div>
     </div>
   </div>
-  <button type="submit" class="btn btn-primary">Cadastrar</button>
+  <button [disabled]="form.invalid" *ngIf="!isLoading" type="submit" class="btn btn-primary">{{isEdit ? 'Editar' :'Cadastrar'}}</button>
+  <app-spinner *ngIf="isLoading"></app-spinner>
 </form>
 
 <div class="alert alert-danger mt-3" role="alert" *ngIf="requestError">

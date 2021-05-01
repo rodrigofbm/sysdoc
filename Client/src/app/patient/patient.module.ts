@@ -1,3 +1,4 @@
+import { SharedModule } from './../shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -23,6 +24,7 @@ import { PatientRoutingModule } from './patient-routing.module';
     FormsModule,
     BrowserAnimationsModule,
     PatientRoutingModule,
+    SharedModule,
     BsDatepickerModule.forRoot(),
   ]
 })

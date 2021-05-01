@@ -11,7 +11,7 @@
   <tbody>
     <tr *ngFor="let patient of patients">
       <th scope="row">
-        <button type="button" class="btn btn-primary btn-sm">Editar</button>
+        <button type="button" class="btn btn-primary btn-sm" [routerLink]="[patient.id, 'edit']">Editar</button>
         <button type="button" class="btn btn-danger btn-sm ml-1" (click)="onRemove(patient.id)">Remover</button>
       </th>
       <td>{{patient.name}}</td>

@@ -28,6 +28,13 @@ namespace API.Controllers
             return Ok(_mapper.Map<IReadOnlyList<Patient>, IReadOnlyList<PatientDTO>>(patients));
         }
 
+        [HttpGet("{id}")]
+        public async Task<ActionResult<IReadOnlyList<PatientDTO>>> GetById(Guid id) {
+            var patient = await _unityOfWork.GetRepository<Patient>().GetByIdAsync(id);
+            
+            return Ok(_mapper.Map<Patient, PatientDTO>(patient));
+        }
+
         [HttpPost]
         public async Task<ActionResult<PatientDTO>> Create([FromBody] PatientDTO patient) {
             var spec = new PatientByCpfSpecification(patient.Cpf);
@@ -67,7 +74,11 @@ namespace API.Controllers
             }
 
             var pat = _mapper.Map<PatientDTO, Patient>(patient);
-
+            patientEntity.BirthDate = patient.BirthDate;
+            patientEntity.Name = patient.Name;
+            patientEntity.Cpf = patient.Cpf;
+            patientEntity.DoctorId = patient.DoctorId;
+            
             _unityOfWork.GetRepository<Patient>().Update(patientEntity);
             await _unityOfWork.Complete();
             
