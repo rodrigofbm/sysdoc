@@ -15,6 +15,8 @@ namespace API.DTOs
         public DateTime BirthDate { get; set; }
 
         [Required(ErrorMessage = "O CPF é obrigatório")]
+        [MaxLength(11, ErrorMessage = "O CPF precisa ter 11 dígitos")]
+        [MinLength(11, ErrorMessage = "O CPF precisa ter 11 dígitos")]
         public string Cpf { get; set; }
 
         [Required(ErrorMessage = "Um médico precisa ser atribuído ao paciente")]
