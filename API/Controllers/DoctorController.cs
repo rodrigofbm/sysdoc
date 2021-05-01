@@ -30,6 +30,13 @@ namespace API.Controllers
             return Ok(_mapper.Map<IReadOnlyList<Doctor>, IReadOnlyList<DoctorDTO>>(doctors));
         }
 
+        [HttpGet("{id}")]
+        public async Task<ActionResult<DoctorDTO>> GetById(Guid id) {
+            var doctor = await _unityOfWork.GetRepository<Doctor>().GetByIdAsync(id);
+            
+            return Ok(_mapper.Map<Doctor, DoctorDTO>(doctor));
+        }
+
         [HttpPost]
         public async Task<ActionResult<DoctorDTO>> Create([FromBody] DoctorDTO doctor) {
             var spec = new DoctorWithCrmAndCrmUfSpecification(doctor.Crm, doctor.CrmUf);

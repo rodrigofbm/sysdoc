@@ -1,15 +1,24 @@
 <form #form="ngForm" (ngSubmit)="onSubmit(form)">
   <div class="form-group">
     <label for="name">Nome</label>
-    <input type="text" class="form-control" id="name" ngModel required>
+    <input type="text" class="form-control" id="name" name="name" ngModel required>
   </div>
   <div class="form-group">
     <label for="crm">CRM</label>
-    <input type="text" class="form-control" id="crm" ngModel required>
+    <input type="text" class="form-control" id="crm" name="crm" ngModel required>
   </div>
   <div class="form-group">
     <label for="crmUf">CRM UF</label>
-    <input type="text" class="form-control" id="crmUf" ngModel required maxlength="2">
+    <input type="text" class="form-control" id="crmUf" name="crmuf" ngModel required maxlength="2">
   </div>
-  <button type="submit" class="btn btn-primary">Cadastrar</button>
+  <button [disabled]="form.invalid" *ngIf="!isLoading" type="submit" class="btn btn-primary">{{isEdit ? 'Editar' :'Cadastrar'}}</button>
+  <app-spinner *ngIf="isLoading"></app-spinner>
 </form>
+
+<div class="alert alert-danger mt-3" role="alert" *ngIf="requestError">
+  {{requestError}}
+</div>
+
+<div class="alert alert-success mt-3" role="alert" *ngIf="requestSuccess">
+  {{requestSuccess}}
+</div>

@@ -29,7 +29,7 @@ namespace API.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<IReadOnlyList<PatientDTO>>> GetById(Guid id) {
+        public async Task<ActionResult<PatientDTO>> GetById(Guid id) {
             var patient = await _unityOfWork.GetRepository<Patient>().GetByIdAsync(id);
             
             return Ok(_mapper.Map<Patient, PatientDTO>(patient));

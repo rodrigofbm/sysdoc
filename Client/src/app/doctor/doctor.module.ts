@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { DoctorRoutingModule } from './doctor-routing.module';
+import { SharedModule } from './../shared/shared.module';
 import { DoctorComponent } from './doctor.component';
 import { DoctorItemsComponent } from './doctor-items/doctor-items.component';
 import { ManageComponent } from './manage/manage.component';
@@ -18,7 +19,8 @@ import { ManageComponent } from './manage/manage.component';
   imports: [
     CommonModule,
     FormsModule,
-    DoctorRoutingModule
+    DoctorRoutingModule,
+    SharedModule
   ]
 })
 export class DoctorModule { }
