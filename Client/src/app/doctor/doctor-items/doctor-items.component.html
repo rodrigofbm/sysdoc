@@ -1,0 +1,24 @@
+<button type="button" routerLink="new" class="btn btn-success mb-2">Adicionar</button>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Doutor</th>
+      <th scope="col">CRM</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let doc of doctors">
+      <th scope="row">
+        <button type="button" class="btn btn-primary btn-sm">Editar</button>
+        <button type="button" class="btn btn-danger btn-sm ml-1" (click)="onRemove(doc.id)">Remover</button>
+      </th>
+      <td>{{doc.name}}</td>
+      <td>{{doc.crm}} - {{doc.crmUf}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="alert alert-danger" role="alert" *ngIf="error">
+  {{error}}
+</div>

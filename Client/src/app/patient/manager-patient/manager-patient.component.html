@@ -1,0 +1,33 @@
+<form #form="ngForm" (ngSubmit)="onSubmit(form)">
+  <div class="form-group">
+    <label for="name">Nome</label>
+    <input type="text" class="form-control" id="name" name="name" ngModel required>
+  </div>
+  <div class="form-group">
+    <label for="cpf">CPF</label>
+    <input type="text" class="form-control" id="cpf" name="cpf" ngModel required maxlength="11">
+  </div>
+  <div class="form-group">
+    <label for="doctor">Médico Responsável</label>
+    <select class="form-control" name="doctor" id="doctor" ngModel required>
+      <option *ngFor="let doc of doctors" [value]="doc.id">{{doc.name}}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="crmUf">Data de Nascimento</label>
+    <div class="row">
+      <div class="col-xs-12 col-12 col-sm-5 col-md-6 col-lg-4 form-group">
+        <input placeholder="Clique para selecionar" type="text" required ngModel name="birthdate" class="form-control" bsDatepicker #dp="bsDatepicker" [maxDate]="maxDate">
+      </div>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Cadastrar</button>
+</form>
+
+<div class="alert alert-danger mt-3" role="alert" *ngIf="requestError">
+  {{requestError}}
+</div>
+
+<div class="alert alert-success mt-3" role="alert" *ngIf="requestSuccess">
+  {{requestSuccess}}
+</div>

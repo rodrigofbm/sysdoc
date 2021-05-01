@@ -1,0 +1,22 @@
+<button type="button" routerLink="new" routerLink="new" class="btn btn-success mb-2">Adicionar</button>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Pacient</th>
+      <th scope="col">CPF</th>
+      <th scope="col">Data de Nascimento</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let patient of patients">
+      <th scope="row">
+        <button type="button" class="btn btn-primary btn-sm">Editar</button>
+        <button type="button" class="btn btn-danger btn-sm ml-1" (click)="onRemove(patient.id)">Remover</button>
+      </th>
+      <td>{{patient.name}}</td>
+      <td>{{patient.cpf}}</td>
+      <td>{{patient.birthDate | date:'dd/MM/YYYY'}}</td>
+    </tr>
+  </tbody>
+</table>

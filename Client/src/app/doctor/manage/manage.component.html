@@ -1,0 +1,15 @@
+<form #form="ngForm" (ngSubmit)="onSubmit(form)">
+  <div class="form-group">
+    <label for="name">Nome</label>
+    <input type="text" class="form-control" id="name" ngModel required>
+  </div>
+  <div class="form-group">
+    <label for="crm">CRM</label>
+    <input type="text" class="form-control" id="crm" ngModel required>
+  </div>
+  <div class="form-group">
+    <label for="crmUf">CRM UF</label>
+    <input type="text" class="form-control" id="crmUf" ngModel required maxlength="2">
+  </div>
+  <button type="submit" class="btn btn-primary">Cadastrar</button>
+</form>
