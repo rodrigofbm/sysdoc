@@ -1,0 +1,24 @@
+<div class="form-group">
+    <label for="doctor">Médico</label>
+    <select (change)="onChange($event)" class="form-control" name="doctor" id="doctor" #doctor required>
+      <option value="">Selecione um médico</option>
+      <option *ngFor="let doc of doctors" [value]="doc.id">{{doc.name}}</option>
+    </select>
+
+    <table class="table" *ngIf="!!patients">
+      <thead>
+        <tr>
+          <th scope="col">Nome</th>
+          <th scope="col">CPF</th>
+          <th scope="col">Data de Nascimento</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of patients">
+          <td>{{item.name}}</td>
+          <td>{{item.cpf}}</td>
+          <td>{{item.birthDate | date:'dd/MM/YYYY'}}</td>
+        </tr>
+      </tbody>
+    </table>
+</div>

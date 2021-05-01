@@ -7,6 +7,7 @@ import { SharedModule } from './../shared/shared.module';
 import { DoctorComponent } from './doctor.component';
 import { DoctorItemsComponent } from './doctor-items/doctor-items.component';
 import { ManageComponent } from './manage/manage.component';
+import { ReportsComponent } from './reports/reports.component';
 
 
 
@@ -14,7 +15,8 @@ import { ManageComponent } from './manage/manage.component';
   declarations: [
     DoctorItemsComponent,
     DoctorComponent,
-    ManageComponent
+    ManageComponent,
+    ReportsComponent
   ],
   imports: [
     CommonModule,

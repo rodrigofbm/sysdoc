@@ -32,7 +32,8 @@ namespace API.Controllers
 
         [HttpGet("{id}")]
         public async Task<ActionResult<DoctorDTO>> GetById(Guid id) {
-            var doctor = await _unityOfWork.GetRepository<Doctor>().GetByIdAsync(id);
+            var spec = new DoctorWihPatientsSpecification(id);
+            var doctor = await _unityOfWork.GetRepository<Doctor>().GetEntityWithSpec(spec);
             
             return Ok(_mapper.Map<Doctor, DoctorDTO>(doctor));
         }
