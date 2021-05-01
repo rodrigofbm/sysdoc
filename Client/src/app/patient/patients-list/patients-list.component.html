@@ -15,7 +15,7 @@
         <button type="button" class="btn btn-danger btn-sm ml-1" (click)="onRemove(patient.id)">Remover</button>
       </th>
       <td>{{patient.name}}</td>
-      <td>{{patient.cpf}}</td>
+      <td>{{patient.cpf | cpf}}</td>
       <td>{{patient.birthDate | date:'dd/MM/YYYY'}}</td>
     </tr>
   </tbody>
